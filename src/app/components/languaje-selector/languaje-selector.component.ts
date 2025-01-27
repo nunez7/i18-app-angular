@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { LanguajeService } from '../../service/languaje.service';
 
 @Component({
   selector: 'languaje-selector',
@@ -9,6 +10,8 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 })
 export class LanguajeSelectorComponent {
 
+  languajeService = inject(LanguajeService);
+
   languages = signal([
     { code: 'en', flag: '🇺🇸' },
     { code: 'es', flag: '🇪🇸' },
@@ -16,5 +19,9 @@ export class LanguajeSelectorComponent {
     { code: 'it', flag: '🇮🇹' },
   ]);
 
-
+  changeLanguage(event: Event){
+    const target = event.target as HTMLSelectElement;
+    const lang = target.value;
+    this.languajeService.changeLanguage(lang);
+  }
  }
