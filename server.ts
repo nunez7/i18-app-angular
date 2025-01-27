@@ -28,6 +28,8 @@ export function app(): express.Express {
   server.get('*', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
 
+    const lang = 'Español';
+
     commonEngine
       .render({
         bootstrap,
@@ -38,6 +40,7 @@ export function app(): express.Express {
           { provide: APP_BASE_HREF, useValue: baseUrl },
           { provide: 'REQUEST', useValue: req },
           { provide: 'RESPONSE', useValue: res },
+          { provide: 'SERVER_LANG_TOKEN', useValue: lang },
         ],
       })
       .then((html) => res.send(html))
