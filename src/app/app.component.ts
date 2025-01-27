@@ -20,10 +20,10 @@ export class AppComponent {
     @Optional()
     @Inject(SERVER_LANG_TOKEN)  langServer: string) {
     
-    console.log({ cookie: this.cookie.get('lang') });
+      const lang =
+      langServer ??
+      (this.cookie.check('lang') ? this.cookie.get('lang') : 'en');
 
-    const lan = this.cookie.check('lang') ? this.cookie.get('lang') : 'en';
-
-    this.languajeService.changeLanguage(lan);
+      this.languajeService.changeLanguage(lang);
   }
 }

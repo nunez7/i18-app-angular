@@ -28,7 +28,11 @@ export function app(): express.Express {
   server.get('*', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
 
-    const lang = 'Español';
+    //console.log('Hola Mundo desde server.ts');
+    const cookies = headers.cookie ?? ''; // lang=it;another=cookie
+    const langCookie =
+      cookies.split(';').find((cookie) => cookie.includes('lang')) ?? 'lang=en'; // lang=it
+    const [, lang] = langCookie.split('=');
 
     commonEngine
       .render({
