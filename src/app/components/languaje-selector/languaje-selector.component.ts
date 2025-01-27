@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { LanguajeService } from '../../service/languaje.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'languaje-selector',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './languaje-selector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
