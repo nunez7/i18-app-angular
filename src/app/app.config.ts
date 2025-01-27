@@ -10,7 +10,7 @@ import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) => {
-  return new TranslateHttpLoader(http, './i18n/', '.json'); // Ruta de las traducciones
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json'); // Ruta de las traducciones
 };
 
 export const appConfig: ApplicationConfig = {
